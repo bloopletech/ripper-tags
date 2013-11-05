@@ -29,8 +29,8 @@ module RipperTags
       const.to_s.gsub('::', '.')
     end
 
-    def display_pattern(tag)
-      tag.fetch(:pattern).to_s.gsub('\\','\\\\\\\\').gsub('/','\\/')
+    def display_line(tag)
+      tag.fetch(:line).to_s
     end
 
     def display_class(tag)
@@ -61,10 +61,10 @@ module RipperTags
     end
 
     def format(tag)
-      "%s\t%s\t/^%s$/;\"\t%s%s%s" % [
+      "%s\t%s\t%s;\"\t%s%s%s" % [
         tag.fetch(:full_name),
         relative_path(tag),
-        display_pattern(tag),
+        display_line(tag),
         display_kind(tag),
         display_class(tag),
         display_inheritance(tag),
